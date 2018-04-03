@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset=utf-8>
+    <title>BeverMapping</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <!--<meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">-->
+
+    <link rel="stylesheet" type="text/css" href="style/geostyle.css" />
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#000000">
+</head>
+
+<body>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/sw.js').then(function (registration) {
+                    // Registration was successful
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }, function (err) {
+                    // registration failed :(
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+
+    <script type="text/javascript" src="tg/l.js"></script>
+    <script type="text/javascript" src="tg/tg.js"></script>
+
+    <script type="text/javascript" src="scripts/Detector.js"></script>
+    <script type="text/javascript" src="scripts/three91.min.js"></script>
+    <script type="text/javascript" src="scripts/z1.js"></script>
+    <script type="text/javascript" src="scripts/lzs.js"></script>
+    <script type="text/javascript" src="scripts/mg.js"></script>
+    <link type="text/css" rel="stylesheet" href="style/guidef.css">
+
+    <script type="text/javascript" src="scripts/z2.js"></script>
+    <script type="text/javascript" src="scripts/bgp.js"></script>
+
+    <script type="text/javascript" src="tg/strin.js"></script>
+    <script type="text/javascript" src="tg/jet.js"></script>
+
+    <div id="MainConDiv" style="width:100%;height:100%;">
+        <div id="MainGeoDiv" style="width:100%;">
+            <script type="text/javascript">
+                console.warn = function () { };
+
+                var gdiv = document.getElementById("MainGeoDiv");
+                var lastps = 15200;
+                var lastpe = 15400;
+                if (localStorage.getItem('lastps')) lastps = parseInt(localStorage.getItem('lastps'));
+                if (localStorage.getItem('lastpe')) lastpe = parseInt(localStorage.getItem('lastpe'));
+                if (Math.abs(lastps - lastpe) > maxpelallowed || Math.abs(lastps - lastpe) <= 1) { lastps = 0; lastpe = 20 };
+                var picparams = {
+                    dum: function () { },
+                    ps: lastps,
+                    pe: lastpe,
+                    openf: opentxtorpic
+                }
+                //see fmanage.js for this function
+                fgui = makefgui();
+
+                var pelstart = lastps, pelend = lastpe;
+                var piclink = defimg;
+                //main function that runs all
+                //insead of piclink it is possible to use imageURL directly
+                //see fmanage.js for parsebevtxt
+                //init data params
+                var parin = new setindataparin();
+                parin.set(piclink, pelstart, pelend);
+                var mygeo = new setindata('MainGeoDiv', fgui, parin);
+                //attach gui for first run
+                var fcontainer = document.getElementById("BeverGeoPlot");
+                fgui.domElement.id = "fguipos";
+                condiv().appendChild(fgui.domElement);
+
+                //uncomment next line to get buttons functionality
+
+                window.addEventListener('resize', onWindowResize, false);
+                onWindowResize();
+
+
+                function onWindowResize() {
+                    gdiv.style.height = window.innerHeight + "px";
+                }
+
+            </script>
+        </div>
+    </div>
+</body>
+</html>

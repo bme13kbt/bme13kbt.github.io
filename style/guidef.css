@@ -1,0 +1,417 @@
+.dg {
+-webkit-transform: translateZ(0);
+-moz-transform: translateZ(0);
+-ms-transform: translateZ(0);
+-o-transform: translateZ(0);
+transform: translateZ(0);
+  /** Clear list styles */
+  /* Auto-place container */
+  /* Auto-placed GUI's */
+  /* Line items that don't contain folders. */
+  /** Folder names */
+  /** Hides closed items */
+  /** Controller row */
+  /** Name-half (left) */
+  /** Controller-half (right) */
+  /** Controller placement */
+  /** Shorter number boxes when slider is present. */
+  /** Ensure the entire boolean and function row shows a hand */}
+  .dg ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    clear: both; }
+  .dg.ac {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    z-index: 0; }
+  .dg:not(.ac) .main {
+    /** Exclude mains in ac so that we don't hide close button */
+    overflow: hidden; }
+  .dg.main {
+    -webkit-transition: opacity 0.1s linear;
+    -o-transition: opacity 0.1s linear;
+    -moz-transition: opacity 0.1s linear;
+    transition: opacity 0.1s linear; }
+    .dg.main.taller-than-window {
+      overflow-y: auto; }
+      .dg.main.taller-than-window .close-button {
+        opacity: 1;
+        /* TODO, these are style notes */
+        margin-top: -1px;
+        border-top: 2px solid var(--myyellow); }
+    .dg.main ul.closed .close-button {
+      opacity: 1 !important; }
+    .dg.main:hover .close-button,
+    .dg.main .close-button.drag {
+      opacity: 1; }
+    .dg.main .close-button {
+      /*opacity: 0;*/
+      -webkit-transition: opacity 0.1s linear;
+      -o-transition: opacity 0.1s linear;
+      -moz-transition: opacity 0.1s linear;
+      transition: opacity 0.1s linear;
+      border: 2px solid var(--myyellow); 
+      line-height: 39px;
+      height: 40px;
+      /* TODO, these are style notes */
+      cursor: pointer;
+      text-align: center;
+      background-color: var(--myblack); }
+      .dg.main .close-button.close-top {
+        position: relative; }
+      .dg.main .close-button.close-bottom {
+        position: absolute; }
+      .dg.main .close-button:hover {
+          /*hover menu*/
+        background-color: var(--myblack);
+      }
+  .dg.a {
+    float: right;
+    margin-right: 15px;
+    overflow-y: visible; }
+    .dg.a.has-save > ul.close-top {
+      margin-top: 0; }
+    .dg.a.has-save > ul.close-bottom {
+      margin-top: 27px; }
+    .dg.a.has-save > ul.closed {
+      margin-top: 0; }
+    .dg.a .save-row {
+      top: 0;
+      z-index: 1002; }
+      .dg.a .save-row.close-top {
+        position: relative; }
+      .dg.a .save-row.close-bottom {
+        position: fixed; }
+  .dg li {
+    -webkit-transition: height 0.1s ease-out;
+    -o-transition: height 0.1s ease-out;
+    -moz-transition: height 0.1s ease-out;
+    transition: height 0.1s ease-out;
+    /*-webkit-transition: overflow 0.1s linear;
+    -o-transition: overflow 0.1s linear;
+    -moz-transition: overflow 0.1s linear;
+    transition: overflow 0.1s linear;*/ 
+
+  }
+  .dg li:not(.folder) {
+    cursor: auto;
+    height: 40px;
+    line-height: 39px;
+    padding: 0 4px 0 5px; }
+
+
+
+  .dg li.folder {
+    padding: 0;
+    border-left: 4px solid transparent; }
+  .dg li.title {
+    cursor: pointer;
+    margin-left: -4px; }
+  .dg .closed li:not(.title),
+  .dg .closed ul li,
+  .dg .closed ul li > * {
+    height: 0;
+    overflow: hidden;
+    border: 0; }
+  .dg .cr {
+    clear: both;
+    padding-left: 3px;
+    height: 27px;
+    overflow: hidden; }
+  .dg .property-name {
+    cursor: default;
+    float: left;
+    clear: left;
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis; }
+  .dg .c {
+    float: left;
+    width: 50%;
+    position: relative; }
+  .dg .c textarea,input[type=tel] {
+    border: 0;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 3px;
+    width: 100%;
+    word-break: break-word;
+    float: right; }
+  .dg .has-slider input[type=text] {
+    width: 15%;
+    margin-left: 0; }
+
+  .dg .slider {
+    float: left;
+    width: 82%;
+    margin-left: -5px;
+    margin-right: 0;
+    height: 16px;
+    margin-top: 4px; }
+  .dg .slider-fg {
+    height: 100%; }
+
+  .dg .c select {
+    font: 21px 'Arial', sans-serif;
+    height: 30px;
+    width: 66%;
+    /*margin-left: -5px;*/
+    margin:auto
+
+  }
+  .dg .cr.function,
+  .dg .cr.function .property-name,
+  .dg .cr.function *,
+  .dg .cr.boolean,
+  .dg .cr.boolean * {
+    cursor: pointer; }
+
+      .dg .c input[type=checkbox] {
+          margin-top: 5px;
+    width: 30px;
+    height: 30px;
+    /*float: right;*/
+
+      }
+
+  .dg .cr.function .property-name{
+      width:100%;
+  }
+
+
+  .dg .cr.color {
+    overflow: visible; }
+  .dg .selector {
+    display: none;
+    position: absolute;
+    margin-left: -9px;
+    margin-top: 23px;
+    z-index: 10; }
+  .dg .c:hover .selector,
+  .dg .selector.drag {
+    display: block; }
+  .dg li.save-row {
+    padding: 0; }
+    .dg li.save-row .button {
+      display: inline-block;
+      padding: 0px 6px; }
+  .dg.dialogue {
+    background-color: #222;
+    width: 460px;
+    padding: 15px;
+    font-size: 13px;
+    line-height: 15px; }
+
+/* TODO Separate style and structure */
+#dg-new-constructor {
+  padding: 10px;
+  color: #222;
+  font-family: Monaco, monospace;
+  font-size: 20px;
+  border: 0;
+  resize: none;
+  box-shadow: inset 1px 1px 1px #888;
+  word-wrap: break-word;
+  margin: 12px 0;
+  display: block;
+  width: 440px;
+  overflow-y: scroll;
+  height: 100px;
+  position: relative; }
+
+#dg-local-explain {
+  display: none;
+  font-size: 11px;
+  line-height: 17px;
+  border-radius: 3px;
+  background-color: #333;
+  padding: 8px;
+  margin-top: 10px; }
+  #dg-local-explain code {
+    font-size: 20px; }
+
+#dat-gui-save-locally {
+  display: none; }
+
+/** Main type */
+.dg {
+  color: var(--myyellow);
+  font: 20px 'Arial', sans-serif;
+  /*font: bold 18px "Arial Black", Gadget, sans-serif;*/
+  /*'Lucida Grande', sans-serif;*/
+  text-shadow: 0 -1px 0 #111;
+  /** Auto place */
+  /* Controller row, <li> */
+  /** Controllers */ }
+  .dg.main {
+    /** Scrollbar */ }
+    .dg.main::-webkit-scrollbar {
+      width: 5px;
+      background: var(--mylgrey); }
+    .dg.main::-webkit-scrollbar-corner {
+      height: 0;
+      display: none; }
+    .dg.main::-webkit-scrollbar-thumb {
+      border-radius: 5px;
+      background: #676767; }
+  .dg li:not(.folder) {
+    background: #fff;
+    /*border-bottom: 1px solid var(--myyellow);*/
+
+  }
+  .dg li.save-row {
+    line-height: 25px;
+    background: #dad5cb;
+    border: 0; }
+    .dg li.save-row select {
+      margin-left: 5px;
+      width: 108px;
+    }
+    .dg li.save-row .button {
+      margin-left: 5px;
+      margin-top: 1px;
+      border-radius: 2px;
+      font-size: 9px;
+      line-height: 7px;
+      padding: 4px 4px 5px 4px;
+      background: #c5bdad;
+      color: #fff;
+      text-shadow: 0 1px 0 #b0a58f;
+      box-shadow: 0 -1px 0 #b0a58f;
+      cursor: pointer; }
+      .dg li.save-row .button.gears {
+        background: #c5bdad url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAANCAYAAAB/9ZQ7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAQJJREFUeNpiYKAU/P//PwGIC/ApCABiBSAW+I8AClAcgKxQ4T9hoMAEUrxx2QSGN6+egDX+/vWT4e7N82AMYoPAx/evwWoYoSYbACX2s7KxCxzcsezDh3evFoDEBYTEEqycggWAzA9AuUSQQgeYPa9fPv6/YWm/Acx5IPb7ty/fw+QZblw67vDs8R0YHyQhgObx+yAJkBqmG5dPPDh1aPOGR/eugW0G4vlIoTIfyFcA+QekhhHJhPdQxbiAIguMBTQZrPD7108M6roWYDFQiIAAv6Aow/1bFwXgis+f2LUAynwoIaNcz8XNx3Dl7MEJUDGQpx9gtQ8YCueB+D26OECAAQDadt7e46D42QAAAABJRU5ErkJggg==) 2px 1px no-repeat;
+        height: 7px;
+        width: 8px; }
+      .dg li.save-row .button:hover {
+        background-color: #bab19e;
+        box-shadow: 0 -1px 0 #b0a58f; }
+  .dg li.folder {
+    border-bottom: 0; }
+  .dg li.title {
+    padding-left: 16px;
+    background: var(--myblack) url(data:image/gif;base64,R0lGODlhBQAFAJEAAP////Pz8////////yH5BAEAAAIALAAAAAAFAAUAAAIIlI+hKgFxoCgAOw==) 6px 10px no-repeat;
+    cursor: pointer;
+    /*border-bottom: 2px solid #9f8843;*/
+    border: 2px solid var(--myyellow);
+  }
+  .dg .closed li.title {
+    background-image: url(data:image/gif;base64,R0lGODlhBQAFAJEAAP////Pz8////////yH5BAEAAAIALAAAAAAFAAUAAAIIlGIWqMCbWAEAOw==); }
+  .dg .cr.boolean {
+    border-left: 3px solid #d4b8dc; }
+  .dg .cr.color {
+    border-left: 3px solid; }
+  .dg .cr.function {
+    border-left: 3px solid #574917; }
+  .dg .cr.number {
+    border-left: 3px solid var(--myyellow);
+
+  }
+    .dg .cr.number input[type=tel],
+    .dg .cr.number input[type=text] {
+      color: var(--myviolet);
+      font-size: 26px;
+    }
+  .dg .cr.string {
+    border-left: 3px solid var(--myyellow)
+  }
+    .dg .cr.string textarea,input[type=tel] {
+      font-size: 26px;
+      color: #FFF;
+    }
+    .dg .cr.string textarea {
+      height:32px;
+      resize:none;
+    }
+    .dg .cr.string textarea:not(.myta) {
+      overflow:hidden;
+    }
+    /*.dg .cr.string textarea {
+    height:31px;}*/
+  .dg .cr.function:hover, .dg .cr.boolean:hover {
+    background: var(--mydgrey);
+  }
+  .dg .cr.function.myguibut:hover
+  {
+      background: #fff;
+  }
+
+
+  .dg .c textarea,input[type=tel]  {
+    background: #303030;
+    outline: none; }
+    .dg .c textarea,input[type=tel] :hover {
+      background: #3c3c3c; }
+    .dg .c textarea,input[type=tel] :focus {
+      background: #494949;
+      color: #fff; }
+
+  .dg .c .slider {
+    background: #d4b8dc;
+    height:32px;
+    cursor: ew-resize; }
+  .dg .c .slider-fg {
+    background: #b77fc7;
+    height:32px;
+    max-width: 100%; }
+  .dg .c .slider:hover {
+    background: #d4b8dc; }
+    .dg .c .slider:hover .slider-fg {
+      background: #b77fc7; }
+    .dg li.myguibut {
+    cursor: auto;
+    height: auto;
+    line-height: 0px;
+    }
+
+    .has-slider .c {
+    width:70%
+    }
+    .has-slider .property-name{
+      width:30%;
+    }
+    .number:not(.has-slider) .c,
+    .string .c {
+    width:70%
+    }
+    .number:not(.has-slider) .property-name,
+    .string .property-name{
+      max-width:30%;
+    }
+        .string .c select{
+    width:100%
+    }
+
+   .myta {
+    resize: none;
+    overflow:auto;
+    min-height: 0px;
+    max-height: 205px;
+        }
+  .dg li .qtext {
+    height: auto;
+  }
+  .dg .qtext:hover {
+   background: #fff;
+  }
+    .cr.string.bigta {
+    height: auto;
+  }
+    .c.bigtadiv {
+    overflow:auto;
+    height: auto;
+    padding-left:5px;
+    width:99%;
+  }
+
+
+   .qtext .property-name {
+   font: 45px 'Arial', sans-serif;
+   text-align: center;
+   
+   }
